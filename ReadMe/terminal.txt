@@ -22,3 +22,4 @@ python microblog.py
 (venv) $ pip install flask-migrate
 (venv) $ flask db init
 создадим репозиторий миграции для microblog
+(venv) $ flask db migrate -m "users table"

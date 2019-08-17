@@ -16,3 +16,7 @@ password_hash   VARCHAR(128)
 >>> u = User(username='susan', email='susan@example.com')
 >>> u
 <User susan>
+
+Команда flask db migrate не вносит никаких изменений в базу данных, 
+    она просто создает сценарий миграции. Чтобы применить изменения в базе данных, 
+    необходимо использовать команду flask db upgrade.
