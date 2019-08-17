@@ -30,7 +30,9 @@ def about():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
+    #если все поля заполнены
     if form.validate_on_submit():
+        #создание сообщения flash для get_flashed_messages()
         flash('Login requested for user {}, remember_me={}'.format(
             form.username.data, form.remember_me.data))
         return redirect('/index')
