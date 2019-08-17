@@ -20,3 +20,5 @@ python microblog.py
 
 (venv) $ pip install flask-sqlalchemy
 (venv) $ pip install flask-migrate
+(venv) $ flask db init
+создадим репозиторий миграции для microblog
