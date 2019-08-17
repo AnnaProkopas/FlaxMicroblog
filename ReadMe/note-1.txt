@@ -1,0 +1,18 @@
+Flask-SQLAlchemy
+(venv) $ pip install flask-sqlalchemy
+
+Flask-Migrate
+(venv) $ pip install flask-migrate
+является Flask-оберткой для Alembic, основой для миграции базы данных SQLAlchemy
+
+SQLite
+users:
+id              INTEGER
+username        VARCHAR(64)
+email           VARCHAR(120)
+password_hash   VARCHAR(128)
+
+>>> from app.models import User
+>>> u = User(username='susan', email='susan@example.com')
+>>> u
+<User susan>

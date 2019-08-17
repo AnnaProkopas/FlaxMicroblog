@@ -15,3 +15,8 @@ microblog.py:
         app.run(debug=True)
 
 python microblog.py 
+
+-- -- -- -- -- -- -- -- -- -- -- -- 
+
+(venv) $ pip install flask-sqlalchemy
+(venv) $ pip install flask-migrate
