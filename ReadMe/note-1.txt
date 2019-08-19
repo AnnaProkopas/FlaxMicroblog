@@ -20,3 +20,51 @@ password_hash   VARCHAR(128)
 Команда flask db migrate не вносит никаких изменений в базу данных, 
     она просто создает сценарий миграции. Чтобы применить изменения в базе данных, 
     необходимо использовать команду flask db upgrade.
+
+posts:
+id              INTEGER
+body            VARCHAR(140)
+timestamp       DATETIME
+user_id         INTEGER
+
+from app import db
+from app.models import User, Post
+
+u = User(username='john', email='john@example.com')
+db.session.add(u)
+db.session.commit()
+
+users = User.query.all()
+for u in users:
+    print(u.id, u.username)
+
+u = User.query.get(1)
+p = Post(body='my first post!', author=u)
+db.session.add(p)
+db.session.commit()
+-- -- -- -- -- -- -- -- -- -- --
+>>> # get all posts written by a user
+>>> u = User.query.get(1)
+>>> u
+<User john>
+>>> posts = u.posts.all()
+>>> posts
+[<Post my first post!>]
+
+>>> # same, but with a user that has no posts
+>>> u = User.query.get(2)
+>>> u
+<User susan>
+>>> u.posts.all()
+[]
+
+>>> # print post author and body for all posts 
+>>> posts = Post.query.all()
+>>> for p in posts:
+...     print(p.id, p.author.username, p.body)
+...
+1 john my first post!
+
+# get all users in reverse alphabetical order
+>>> User.query.order_by(User.username.desc()).all()
+[<User susan>, <User john>]
