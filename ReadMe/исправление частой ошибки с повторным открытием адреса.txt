@@ -1,0 +1,18 @@
+It means there's another service's using that port (8080 in this case). Maybe because you forgot close another running Flask app and it's using 8080 port.
+However, you could change the port you're using, for example change it to 4444 like this:
+if __name__=="__main__":
+    app.run(host=os.getenv('IP', '0.0.0.0'), 
+            port=int(os.getenv('PORT', 4444)))
+
+But anyways, I think you'd like to know which program is using that part if it's not your program. You could use nmap or netcat GNU program to check it.
+
+Here's the netcat way (from here):
+$ sudo netstat -nlp | grep 8080
+tcp  0  0  0.0.0.0:8080  0.0.0.0:*  LISTEN  125004/nginx
+When you got it, I'd suggest stop it manually (for example if it's nginx or other HTTP servers, then stop it via service command or systemctl if you're using systemd Linux)
+
+You can also kill it via command kill:
+kill <pid>
+
+You can also kill it via killall or pkill, it use a process name instead of it's pid:
+killall/pkill <process name>

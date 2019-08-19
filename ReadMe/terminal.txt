@@ -24,3 +24,5 @@ python microblog.py
 создадим репозиторий миграции для microblog
 (venv) $ flask db migrate -m "users table"
 (venv) $ flask db upgrade
+
+(venv) $ python  -> -> -> (venv) $ flask shell 
